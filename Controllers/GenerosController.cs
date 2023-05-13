@@ -2,6 +2,7 @@
 using IntroEFCore.DTOs;
 using IntroEFCore.Entidades;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace IntroEFCore.Controllers
 {
@@ -36,6 +37,14 @@ namespace IntroEFCore.Controllers
             await context.SaveChangesAsync();
 
             return Ok(generos);
+        }
+
+
+        // Consulta de datos
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Genero>>> Get()
+        {
+            return await context.Generos.ToListAsync();
         }
     }
 }

@@ -9,7 +9,9 @@ namespace IntroEFCore.Utilidades
         public AutoMapperProfiles()
         {
             CreateMap<GeneroCreacionDTO, Genero>();
+
             CreateMap<ActorCreacionDTO, Actor>();
+            CreateMap<Actor, ActorDTO>();
 
             CreateMap<PeliculaCreacionDTO, Pelicula>()
                 .ForMember(ent => ent.Generos,

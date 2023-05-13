@@ -6,9 +6,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+        .AddJsonOptions(options =>  // Ignore Reference Loop Handling
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
-// Ignore Reference Loop Handling
+//Ignore Reference Loop Handling
 //builder.Services.AddControllers().AddJsonOptions(options =>
 //{
 //    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
@@ -19,7 +21,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // configurar servicios de la aplicacion db= sqlserver, name=DefaultConnection
-builder.Services.AddDbContext<ApplicationDbContext>(opciones=> opciones.UseSqlServer("name=DefaultConnection"));
+builder.Services.AddDbContext<ApplicationDbContext>(opciones => opciones.UseSqlServer("name=DefaultConnection"));
 builder.Services.AddAutoMapper(typeof(Program));
 
 

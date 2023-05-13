@@ -22,13 +22,14 @@ namespace IntroEFCore
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
 
+        // Estamos sobreescribiendo la configuración de las propiedades de tipo string para que tengan un máximo de 150 caracteres.
         protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
         {
             configurationBuilder.Properties<string>().HaveMaxLength(150);
         }
 
-        public DbSet<Genero> Generos => Set<Genero>();
         public DbSet<Actor> Actores => Set<Actor>();
+        public DbSet<Genero> Generos => Set<Genero>();
         public DbSet<Pelicula> Peliculas => Set<Pelicula>();
         public DbSet<Comentario> Comentarios => Set<Comentario>();
         public DbSet<PeliculaActor> PeliculasActores => Set<PeliculaActor>();

@@ -13,7 +13,7 @@ namespace IntroEFCore.Utilidades
 
             CreateMap<PeliculaCreacionDTO, Pelicula>()
                 .ForMember(ent => ent.Generos,
-                    dto => dto.MapFrom(
+                    dto => dto.MapFrom(             // Aqui se esta usando una proyeccion
                         campo => campo.Generos.Select(id => new Genero { Id = id })
                     )
                 );

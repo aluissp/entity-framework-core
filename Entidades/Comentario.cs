@@ -7,7 +7,7 @@
         public bool Recomendar { get; set; }
 
         // Relación con la entidad Pelicula
-        public int PeliculaId { get; set; }
-        public Pelicula Pelicula { get; set; } = null!;
+        public int PeliculaId { get; set; }  // Clave foránea
+        public Pelicula Pelicula { get; set; } = null!; // Propiedad de navegación
     }
 }

@@ -9,7 +9,7 @@ namespace IntroEFCore.Entidades.Configuraciones
         public void Configure(EntityTypeBuilder<Actor> builder)
         {
 
-            //modelBuilder.Entity<Actor>().Property(a => a.Nombre).HasMaxLength(150);
+             //builder.HasKey(a => a.ActorId);
             builder.Property(a => a.FechaNacimiento).HasColumnType("date");
             builder.Property(a => a.Fortuna).HasPrecision(18, 2);
 

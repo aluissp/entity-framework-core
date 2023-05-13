@@ -22,6 +22,10 @@ namespace IntroEFCore.Controllers
         [HttpPost]
         public async Task<ActionResult> Post(GeneroCreacionDTO generoCreacion)
         {
+            var yaExisteGenero = await context.Generos.AnyAsync(x => x.Nombre == generoCreacion.Nombre);
+
+            if (yaExisteGenero) return BadRequest("Ya existe un género con ese nombre" + generoCreacion.Nombre);
+
             var genero = mapper.Map<Genero>(generoCreacion);
 
             context.Add(genero);
@@ -36,7 +40,7 @@ namespace IntroEFCore.Controllers
             context.AddRange(generos);
             await context.SaveChangesAsync();
 
-            return Ok(generos);
+            return Ok();
         }
 
 
@@ -84,7 +88,7 @@ namespace IntroEFCore.Controllers
         public async Task<ActionResult> Delete(int id)
         {
             var filasAlteradas = await context.Generos.Where(g => g.Id == id).ExecuteDeleteAsync();
-            
+
             if (filasAlteradas == 0) return NotFound();
 
             return NoContent();
@@ -95,7 +99,7 @@ namespace IntroEFCore.Controllers
         public async Task<ActionResult> DeleteAnterior(int id)
         {
             var genero = await context.Generos.FirstOrDefaultAsync(g => g.Id == id);
-          
+
             if (genero == null) return NotFound();
 
             context.Remove(genero);

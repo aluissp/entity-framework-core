@@ -11,6 +11,8 @@ namespace IntroEFCore.Entidades.Configuraciones
             var cienciaFiccion = new Genero { Id = 7, Nombre = "Ciencia Ficción" };
             
             builder.HasData(cienciaFiccion, animacion);
+
+            builder.HasIndex(x => x.Nombre).IsUnique();
         }
     }
 }

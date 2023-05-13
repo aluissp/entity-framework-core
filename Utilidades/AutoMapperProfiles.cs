@@ -19,6 +19,8 @@ namespace IntroEFCore.Utilidades
                 );
 
             CreateMap<PeliculaActorCreacionDTO, PeliculaActor>();
+
+            CreateMap<ComentarioCreacionDTO, Comentario>();
         }
     }
 }

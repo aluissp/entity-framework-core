@@ -42,7 +42,10 @@ namespace IntroEFCore.Controllers
 
             context.Add(pelicula);
             await context.SaveChangesAsync();
-            return Ok(pelicula);
+
+            // This line will trow an exception by reference loop
+            //return Ok(pelicula);
+            return Ok();
         }
     }
 }

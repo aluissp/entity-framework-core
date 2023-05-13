@@ -1,4 +1,5 @@
 ﻿using IntroEFCore.Entidades;
+using IntroEFCore.Entidades.Seeding;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -20,6 +21,9 @@ namespace IntroEFCore
 
             // Llamada a las configuraciones en la carpeta Configuraciones
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+            // Seeding de datos
+            SeedingInicial.Seed(modelBuilder);
         }
 
         // Estamos sobreescribiendo la configuración de las propiedades de tipo string para que tengan un máximo de 150 caracteres.
